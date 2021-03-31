@@ -1,0 +1,11 @@
+division_id,division_name,region
+1,Pacific Contiguous,West
+2,Pacific Noncontiguous,West
+3,Mountain,West
+4,West North Central,Midwest
+5,East North Central,Midwest
+6,West South Central,South
+7,East South Central,South
+8,South Atlantic,South
+9,Middle Atlantic,Northeast
+10,New England,Northeast
