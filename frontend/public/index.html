@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--Responsive Design-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Interactive Map</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="http://api.eia.gov/category/?api_key=382f831445c6c53a5b349373e9804570&category_id=371"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/raphael.js"></script>
+        <script src="js/jquery.usmap.js"></script>
+    </head>
+    <body class='text-black'>
+        <div>
+            <nav class="flex items-center justify-between flex-wrap bg-blue-200 p-6">
+                <!--Title-->
+                <div class="flex-shrink">
+                <span class="font-semibold text-xl tracking-tight text-gray-700">Interactive Energy Map</span>
+                </div>
+                <!--Buttons-->
+                <div class="max-w-max flex-grow items-center">
+                <div>
+                    <a href="sources.html" class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black mt-4 lg:mt-0">
+                        Sources</a>
+                </div>
+                </div>
+            </nav>
+            <div id="filter-fueltype ml-20">
+                <label for="consumption" class="border-2 ml-80 mt-20 mb-20">Consumption</label>
+                <input type="radio" id="consumption" value="consumption" class="border-2 mr-40 mt-20 mb-20">
+                <label for="production" class="border-2 mt-20 mb-20">Production</label>
+                <input type="radio" id="production" value="production" class="border-2 mr-40 mt-20 mb-20">
+                <select name="filter" class="border-2 mr-40 mt-20 mb-20">
+                    <option value="default">Select an Energy Sector</option>
+                    <option value="fuel1">Renewables</option>
+                    <option value="fuel2">Fossil Fuels</option>
+                    <option value="fuel3">Nuclear</option>
+                </select>
+                <select name="filter1" class="border-2 mr-80 mt-20 mb-20">
+                    <option value="default">Select a Fuel Type</option>
+                    <option value="fuel1">Coal</option>
+                    <option value="fuel2">Petroleum</option>
+                    <option value="fuel3">Natural Gas</option>
+                    <option value="fuel4">Solar</option>
+                    <option value="fuel5">Wind</option>
+                    <option value="fuel6">Hydro</option>
+                    <option value="fuel7">Geothermal</option>
+                    <option value="fuel8">Wind</option>
+                </select>
+            </div>
+            <div id="map" class="container mx-auto mt-20 ml-80">
+                <!--<iframe id="eia_widget" style="width:100%;height:500px" 
+                src="//www.eia.gov/opendata/embed/iframe.php?geoset_id=ELEC.CONS_TOT.COW-99.A&map=us_merc_en&regions=&relation_mode=line" ></iframe>-->
+                <img src="img/usMap.png">
+            </div>
+        </div>
+    </body>
+    
+
+
+</html>
