@@ -6,14 +6,14 @@
         <!--Responsive Design-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Interactive Map</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
         <script src="http://api.eia.gov/category/?api_key=382f831445c6c53a5b349373e9804570&category_id=371"></script>
-        <script src="js/jquery.js"></script>
+        <!-- <script src="js/jquery.js"></script>
         <script src="js/raphael.js"></script>
-        <script src="js/jquery.usmap.js"></script>
+        <script src="js/jquery.usmap.js"></script> -->
     </head>
     <body class='text-black'>
-        <div>
+        <header>
             <nav class="flex items-center justify-between flex-wrap bg-blue-200 p-6">
                 <!--Title-->
                 <div class="flex-shrink">
@@ -28,27 +28,24 @@
                 </div>
                 </div>
             </nav>
+        </header>
+        <content>
             <div id="filter-fueltype ml-20">
                 <label for="consumption" class="border-2 ml-80 mt-20 mb-20">Consumption</label>
-                <input type="radio" id="consumption" name="energy-type" value="consumption" class="border-2 mr-40 mt-20 mb-20">
+                <input type="radio" id="consumption" name="energy-type" value="consumption" class="border-2 mr-40 mt-20 mb-20 typeSelector" checked>
                 <label for="production" class="border-2 mt-20 mb-20">Production</label>
-                <input type="radio" id="production" name="energy-type" value="production" class="border-2 mr-40 mt-20 mb-20">
+                <input type="radio" id="production" name="energy-type" value="production" class="border-2 mr-40 mt-20 mb-20 typeSelector">
                 <select name="filter" class="border-2 mr-40 mt-20 mb-20">
                     <option value="default">Select an Energy Sector</option>
                     <option value="fuel1">Renewables</option>
                     <option value="fuel2">Fossil Fuels</option>
                     <option value="fuel3">Nuclear</option>
                 </select>
-                <select name="filter1" class="border-2 mr-80 mt-20 mb-20">
-                    <option value="default">Select a Fuel Type</option>
+                <select id="energyDropdown" name="filter1" class="border-2 mr-80 mt-20 mb-20">
+                    <option value="default">Select Fuel Type</option>
                     <option value="fuel1">Coal</option>
                     <option value="fuel2">Petroleum</option>
                     <option value="fuel3">Natural Gas</option>
-                    <option value="fuel4">Solar</option>
-                    <option value="fuel5">Wind</option>
-                    <option value="fuel6">Hydro</option>
-                    <option value="fuel7">Geothermal</option>
-                    <option value="fuel8">Wind</option>
                 </select>
             </div>
             <div id="map" class="container mx-auto mt-20 ml-80">
@@ -56,9 +53,16 @@
                 src="//www.eia.gov/opendata/embed/iframe.php?geoset_id=ELEC.CONS_TOT.COW-99.A&map=us_merc_en&regions=&relation_mode=line" ></iframe>-->
                 <img src="img/usMap.png">
             </div>
-        </div>
+        </content>
+        <footer class="flex items-center justify-between flex-wrap bg-blue-200 p-6">
+            <p>Creators: Jed Pulley, Jt Anderson, Sam Reilly</p>
+            <p><a href="https://github.com/SamRiles/energy_interactive_map">Source Code on Github</a></p>
+        </footer>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous">
+        </script>
+        <script src="js/scripts.js"></script>
     </body>
-    
-
-
 </html>
