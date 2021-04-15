@@ -27,8 +27,7 @@ $(document).ready(function() {
         }
     }
     
-    $('.typeSelector').change((e) => {
+    $(".typeSelector").change((e) => {
         drawEnergyDropdown(e.target.value);
     });
-
 });
