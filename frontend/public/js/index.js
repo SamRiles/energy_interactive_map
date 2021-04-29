@@ -33,9 +33,13 @@ $(function () {
                 size: 30,
                 eventHandlers: {
                     mouseover: function (e, id, mapElem, textElem, elemOptions) {
-                        var type = $("input[name='energy-type']:checked").val();    
+                        // let year = $("#yearpicker").val();
+                        let type = $("input[name='energy-type']:checked").val();
+                        let fuelType = $("#energyDropdown option:selected").text();
                         $('.myText span').html(`
-                            <p>${type} data for: ${id} </p>
+                            <p>State: ${id}</p>
+                            <p>${type}: </p>
+                            <p>${fuelType}: </p>
                         `);
                         //write code here
                     }
@@ -48,4 +52,8 @@ $(function () {
     $(".typeSelector").change((e) => {
         drawEnergyDropdown(e.target.value);
     });
+
+    for(let i = new Date().getFullYear() - 3; i > 1959; i--) {
+        $('#yearpicker').append(`<option value="${i}">${i}</option>`);
+    }
 });

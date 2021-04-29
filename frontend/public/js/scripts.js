@@ -21,8 +21,8 @@ $(document).ready(function() {
         $('#energyDropdown').empty();
         $('#energyDropdown').append('<option value="default">Select Fuel Type</option>');
         for (const [key, value] of Object.entries(typeArr)) {
-            $('#energyDropdown').append(`
-                <option value="${key}">${value}</option>`
+            $('#energyDropdown').append(
+                `<option value="${key}">${value}</option>`
             );
         }
     }
@@ -30,4 +30,8 @@ $(document).ready(function() {
     $(".typeSelector").change((e) => {
         drawEnergyDropdown(e.target.value);
     });
+
+    for(let i = new Date().getFullYear(); i > 1960; i--) {
+        $('#yearpicker').append(`<option value="${i}">${i}</option>`);
+    }
 });
