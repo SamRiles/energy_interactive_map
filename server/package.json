@@ -1,0 +1,30 @@
+{
+  "name": "eia-energy-map",
+  "version": "1.0.0",
+  "description": "API Server and front-end for EIA Energy DB",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start ./dist/index.js",
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/index.ts",
+    "build": "tsc",
+    "stop": "pm2 stop ./dist/index.js",
+    "restart": "pm2 restart ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jed Pulley, Jt Anderson, Sam Reilly",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mariadb": "^2.5.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/node": "^15.0.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}

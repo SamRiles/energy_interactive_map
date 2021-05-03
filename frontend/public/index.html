@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/map.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" charset="utf-8"></script>
@@ -39,20 +40,17 @@
             <input type="radio" id="consumption" name="energy-type" value="consumption" class="border-2 mr-40 mt-20 mb-20 typeSelector" checked>
             <label for="production" class="border-2 mt-20 mb-20">Production</label>
             <input type="radio" id="production" name="energy-type" value="production" class="border-2 mr-40 mt-20 mb-20 typeSelector">
-            <select name="filter" class="border-2 mr-40 mt-20 mb-20">
+            <select id="sectorDropdown" name="filter" class="border-2 mr-40 mt-20 mb-20">
                 <option value="default">Select an Energy Sector</option>
-                <option value="fuel1">Renewables</option>
-                <option value="fuel2">Fossil Fuels</option>
-                <option value="fuel3">Nuclear</option>
+                <option value="renewables">Renewables</option>
+                <option value="fossil-fuels">Fossil Fuels</option>
+                <option value="nuclear">Nuclear</option>
             </select>
             <select id="energyDropdown" name="filter1" class="border-2 mr-80 mt-20 mb-20">
-                <option value="default">Select Fuel Type</option>
-                <option value="fuel1">Coal</option>
-                <option value="fuel2">Petroleum</option>
-                <option value="fuel3">Natural Gas</option>
+
             </select>
             <select name="yearpicker" id="yearpicker">
-                <option value="default">Select a Year</option>
+                
             </select>
         </div>
         <div class="container">
@@ -70,10 +68,5 @@
         <p>Creators: Jed Pulley, Jt Anderson, Sam Reilly</p>
         <p><a href="https://github.com/SamRiles/energy_interactive_map">Source Code on Github</a></p>
     </footer>
-    <!-- <script
-        src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous">
-    </script> -->
 </body>
 </html>

@@ -1,31 +1,61 @@
 $(function () {
     function drawEnergyDropdown(type) {
         const prodTypes = {
-            fuel1: 'Coal',
-            fuel2: 'Petroleum',
-            fuel3: 'Natural Gas',
-            fuel4: 'Solar',
-            fuel5: 'Wind',
-            fuel6: 'Hydro',
-            fuel7: 'Geothermal',
-            fuel8: 'Wind',
+            all: 'All Fuel Types',
+            coal: 'Coal',
+            petrol: 'Petroleum',
+            gas: 'Natural Gas',
+            solar: 'Solar',
+            wind: 'Wind',
+            hydro: 'Hydro',
+            geothermal: 'Geothermal',
         };
         const conTypes = {
-            fuel1: 'Coal',
-            fuel2: 'Petroleum',
-            fuel3: 'Natural Gas',
+            all: 'All Fuel Types',
+            coal: 'Coal',
+            petrol: 'Petroleum',
+            gas: 'Natural Gas',
         };
 
         let typeArr = type === 'production' ? prodTypes : conTypes;
 
         $('#energyDropdown').empty();
-        $('#energyDropdown').append('<option value="default">Select Fuel Type</option>');
         for (const [key, value] of Object.entries(typeArr)) {
             $('#energyDropdown').append(`
                 <option value="${key}">${value}</option>`
             );
         }
     }
+
+    function drawYearDropdown() {
+        for(let i = new Date().getFullYear() - 3; i > 1959; i--) {
+            $('#yearpicker').append(`<option value="${i}">${i}</option>`);
+        }
+    }
+
+    function getConsumptionData() {
+        let filters = {
+            type: $("input[name='energy-type']:checked").val(),
+            fuelType: $("#energyDropdown option:selected").val(),
+            sector: $("#sectorDropdown option:selected").val(),
+            year: $("#yearpicker option:selected").val(),
+        };
+
+        axios.get('https://api.cs366project.live/', {
+              params: filters,
+          })
+          .then(res => console.log(res))
+          .catch(err => console.error(err));
+    }    
+
+    drawEnergyDropdown('consumption');
+    drawYearDropdown();
+    // getConsumptionData();
+
+    $(".typeSelector").change((e) => {
+        drawEnergyDropdown(e.target.value);
+    });
+
     $(".mapcontainer").mapael({
         map: {
             name: "usa_states",
@@ -48,12 +78,4 @@ $(function () {
             }
         }
     });
-    
-    $(".typeSelector").change((e) => {
-        drawEnergyDropdown(e.target.value);
-    });
-
-    for(let i = new Date().getFullYear() - 3; i > 1959; i--) {
-        $('#yearpicker').append(`<option value="${i}">${i}</option>`);
-    }
 });
