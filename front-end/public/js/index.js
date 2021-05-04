@@ -33,24 +33,24 @@ $(function () {
         }
     }
 
-    function getConsumptionData() {
+    function getData(hostname) {
         let filters = {
             type: $("input[name='energy-type']:checked").val(),
             fuelType: $("#energyDropdown option:selected").val(),
-            sector: $("#sectorDropdown option:selected").val(),
+            // sector: $("#sectorDropdown option:selected").val(),
             year: $("#yearpicker option:selected").val(),
         };
 
-        axios.get('https://api.cs366project.live/', {
+        axios.get(hostname, {
               params: filters,
           })
           .then(res => console.log(res))
           .catch(err => console.error(err));
-    }    
+    }
 
     drawEnergyDropdown('consumption');
     drawYearDropdown();
-    // getConsumptionData();
+    getData('http://127.0.0.1:3000/');
 
     $(".typeSelector").change((e) => {
         drawEnergyDropdown(e.target.value);

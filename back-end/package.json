@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start ./dist/index.js",
-    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/index.ts",
+    "dev": "nodemon --watch \"./**/*.ts\" --exec \"ts-node\" ./src/index.ts",
     "build": "tsc",
     "stop": "pm2 stop ./dist/index.js",
     "restart": "pm2 restart ./dist/index.js",
@@ -17,7 +17,8 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mariadb": "^2.5.3"
+    "mariadb": "^2.5.3",
+    "pm2": "^4.5.6"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
