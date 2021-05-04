@@ -50,11 +50,18 @@ $(function () {
 
     drawEnergyDropdown();
     drawYearDropdown();
+    let apiData;
     getData('http://127.0.0.1:3000/')
-    .then((apiData)=>{
-        console.log(apiData);
+    .then((data) => { 
+        apiData = data;
     });
 
+    $("#submit-filter-btn").click(() => {
+        getData('http://127.0.0.1:3000/')
+        .then((data) => { 
+            apiData = data;
+        });
+    });
 
     $(".mapcontainer").mapael({
         map: {
@@ -63,17 +70,17 @@ $(function () {
                 size: 30,
                 eventHandlers: {
                     mouseover: function (e, id, mapElem, textElem, elemOptions) {
-                        // let year = $("#yearpicker").val();
+                        let year = $("#yearpicker").val();
+                        var result = apiData.filter(obj => {
+                            return obj.state_id === id
+                        });
                         let type = $("input[name='energy-type']:checked").val();
                         let fuelType = $("#energyDropdown option:selected").text();
                         $('.myText span').html(`
                             <p>State: ${id}</p>
-                            <p>${type}: </p>
-                            <p>${fuelType}: </p>
+                            <p>${fuelType} ${type}: ${result[0].data} BTUs</p>
                         `);
-                        //write code here
                     }
-                    //add more event handlers here
                 }
             }
         }
