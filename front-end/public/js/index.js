@@ -58,6 +58,7 @@ $(function () {
     function loadSpinner() {
         $(".mapcontainer").hide();
         $(".loader").show();
+        $('.myText span').text("Hover over a state to see data");
         setTimeout(() => {
             $(".loader").hide();
             $(".mapcontainer").show();
