@@ -34,6 +34,9 @@ $(function () {
         $(".mapcontainer").mapael({
             map: {
                 name: "usa_states",
+                zoom: {
+                    enabled: true
+                },
                 defaultArea: {
                     size: 30,
                     eventHandlers: {
@@ -49,7 +52,24 @@ $(function () {
                                 <p>${fuelType} ${type}: ${result[0].data.toLocaleString()} BTUs</p>
                             `);
                         }
-                    }
+                    },
+                    attrsHover: {
+                        animDuration: 100
+                    },
+                    tooltip: {
+                        content: (e) => { 
+                            var result = apiData.filter(obj => {
+                                return obj.state_id === e.node.dataset.id
+                            });
+                            let type = $("input[name='energy-type']:checked").val();
+                            let fuelType = $("#energyDropdown option:selected").text();
+                            return `
+                            <p>State: ${result[0].state_name}</p>
+                            <p>Year: ${result[0].year}</p>
+                            <p>${fuelType} ${type}: ${result[0].data.toLocaleString()} BTUs</p>
+                        `;
+                        }
+                    },
                 }
             }
         });
