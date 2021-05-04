@@ -30,6 +30,40 @@ $(function () {
         }
     }
 
+    function drawMapael() {
+        $(".mapcontainer").mapael({
+            map: {
+                name: "usa_states",
+                defaultArea: {
+                    size: 30,
+                    eventHandlers: {
+                        mouseover: function (e, id, mapElem, textElem, elemOptions) {
+                            var result = apiData.filter(obj => {
+                                return obj.state_id === id
+                            });
+                            let type = $("input[name='energy-type']:checked").val();
+                            let fuelType = $("#energyDropdown option:selected").text();
+                            $('.myText span').html(`
+                                <p>State: ${id}</p>
+                                <p>Year: ${result[0].year}</p>
+                                <p>${fuelType} ${type}: ${result[0].data.toLocaleString()} BTUs</p>
+                            `);
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    function loadSpinner() {
+        $(".mapcontainer").hide();
+        $(".loader").show();
+        setTimeout(() => {
+            $(".loader").hide();
+            $(".mapcontainer").show();
+        }, 1500);
+    }
+
     async function getData(hostname) {
         let data = {};
         let filters = {
@@ -55,34 +89,13 @@ $(function () {
     .then((data) => { 
         apiData = data;
     });
+    drawMapael();
 
     $("#submit-filter-btn").click(() => {
+        loadSpinner();
         getData('http://127.0.0.1:3000/')
         .then((data) => { 
             apiData = data;
         });
-    });
-
-    $(".mapcontainer").mapael({
-        map: {
-            name: "usa_states",
-            defaultArea: {
-                size: 30,
-                eventHandlers: {
-                    mouseover: function (e, id, mapElem, textElem, elemOptions) {
-                        let year = $("#yearpicker").val();
-                        var result = apiData.filter(obj => {
-                            return obj.state_id === id
-                        });
-                        let type = $("input[name='energy-type']:checked").val();
-                        let fuelType = $("#energyDropdown option:selected").text();
-                        $('.myText span').html(`
-                            <p>State: ${id}</p>
-                            <p>${fuelType} ${type}: ${result[0].data.toLocaleString()} BTUs</p>
-                        `);
-                    }
-                }
-            }
-        }
     });
 });
