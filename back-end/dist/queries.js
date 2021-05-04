@@ -298,12 +298,12 @@ exports.default = {
                     res.locals.queryData = [];
                     return next();
                 }
-                sql = `SELECT state_id, year, ${sector} AS data`;
+                sql = `SELECT state_id, state_name, year, ${sector} AS data`;
             }
             else {
                 sql = "SELECT *";
             }
-            sql = sql.concat(" FROM Consumption WHERE 1=1");
+            sql = sql.concat(" FROM Consumption NATURAL JOIN State WHERE 1=1");
         }
         else if (table_name === "production") {
             if (req.query.sector) {
@@ -312,12 +312,12 @@ exports.default = {
                     res.locals.queryData = [];
                     return next();
                 }
-                sql = `SELECT state_id, year, ${sector} AS data`;
+                sql = `SELECT state_id, state_name, year, ${sector} AS data`;
             }
             else {
                 sql = "SELECT *";
             }
-            sql = sql.concat(" FROM Production WHERE 1=1");
+            sql = sql.concat(" FROM Production NATURAL JOIN State WHERE 1=1");
         }
         else {
             res.locals.queryData = [];

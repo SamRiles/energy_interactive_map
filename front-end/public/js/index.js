@@ -44,7 +44,7 @@ $(function () {
                             let type = $("input[name='energy-type']:checked").val();
                             let fuelType = $("#energyDropdown option:selected").text();
                             $('.myText span').html(`
-                                <p>State: ${id}</p>
+                                <p>State: ${result[0].state_name}</p>
                                 <p>Year: ${result[0].year}</p>
                                 <p>${fuelType} ${type}: ${result[0].data.toLocaleString()} BTUs</p>
                             `);
