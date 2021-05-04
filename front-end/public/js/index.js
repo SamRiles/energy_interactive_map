@@ -105,7 +105,7 @@ $(function () {
     drawEnergyDropdown();
     drawYearDropdown();
     let apiData;
-    getData('http://127.0.0.1:3000/')
+    getData('https://api.cs366project.live/')
     .then((data) => { 
         apiData = data;
     });
@@ -113,7 +113,7 @@ $(function () {
 
     $("#submit-filter-btn").click(() => {
         loadSpinner();
-        getData('http://127.0.0.1:3000/')
+        getData('https://api.cs366project.live/')
         .then((data) => { 
             apiData = data;
         });
