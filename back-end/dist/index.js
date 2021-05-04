@@ -32,9 +32,9 @@ function cleanup() {
 }
 process.on('SIGINT', cleanup);
 process.on('SIGTERM', cleanup);
-// app.get('/', (req, res) => {
-//     res.json(req.query);
-// });
+app.get('/', queries_1.default.getAll, (req, res) => {
+    res.json(res.locals.queryData);
+});
 app.get('/ping', (_, res) => { res.send("pong"); });
 app.get('/state', queries_1.default.getStates, (req, res) => {
     res.json(res.locals.queryData);

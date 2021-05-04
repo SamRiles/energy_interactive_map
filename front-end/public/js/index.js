@@ -1,26 +1,23 @@
 $(function () {
-    function drawEnergyDropdown(type) {
-        const prodTypes = {
-            all: 'All Fuel Types',
-            coal: 'Coal',
-            petrol: 'Petroleum',
-            gas: 'Natural Gas',
-            solar: 'Solar',
-            wind: 'Wind',
-            hydro: 'Hydro',
-            geothermal: 'Geothermal',
-        };
-        const conTypes = {
-            all: 'All Fuel Types',
-            coal: 'Coal',
-            petrol: 'Petroleum',
-            gas: 'Natural Gas',
-        };
-
-        let typeArr = type === 'production' ? prodTypes : conTypes;
+    function drawEnergyDropdown() {
+        const fuelTypes = {
+            total: "Total",
+            biofuel: "Biofuel",
+            biomass: "Biomass",
+            geothermal: "Geothermal",
+            hydro: "Hydro",
+            solar: "Solar",
+            wind: "Wind",
+            petrol: "Petrol",
+            coal: "Coal",
+            fossil_fuels: "Fossil Fuels",
+            natural_gas: "Natural Gas",
+            nuclear: "Nuclear",
+            propane: "Propane",
+        }
 
         $('#energyDropdown').empty();
-        for (const [key, value] of Object.entries(typeArr)) {
+        for (const [key, value] of Object.entries(fuelTypes)) {
             $('#energyDropdown').append(`
                 <option value="${key}">${value}</option>`
             );
@@ -34,27 +31,28 @@ $(function () {
     }
 
     function getData(hostname) {
+        let data = {};
         let filters = {
             type: $("input[name='energy-type']:checked").val(),
             fuelType: $("#energyDropdown option:selected").val(),
-            // sector: $("#sectorDropdown option:selected").val(),
+            sector: $("#sectorDropdown option:selected").val(),
             year: $("#yearpicker option:selected").val(),
         };
-
+        
         axios.get(hostname, {
               params: filters,
           })
-          .then(res => console.log(res))
+          .then(res => data = res)
           .catch(err => console.error(err));
+
+        return data;
     }
 
-    drawEnergyDropdown('consumption');
+    drawEnergyDropdown();
     drawYearDropdown();
-    getData('http://127.0.0.1:3000/');
+    let apiData = getData('http://127.0.0.1:3000/');
+    console.log(apiData);
 
-    $(".typeSelector").change((e) => {
-        drawEnergyDropdown(e.target.value);
-    });
 
     $(".mapcontainer").mapael({
         map: {

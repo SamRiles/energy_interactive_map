@@ -35,23 +35,24 @@
         </nav>
     </header>
     <content>
-        <div id="filter-fueltype ml-20">
-            <label for="consumption" class="border-2 ml-80 mt-20 mb-20">Consumption</label>
-            <input type="radio" id="consumption" name="energy-type" value="consumption" class="border-2 mr-40 mt-20 mb-20 typeSelector" checked>
+        <div id="filter-fueltype" class="container mx-auto py-3">
+            <label for="consumption" class="border-2">Consumption</label>
+            <input type="radio" id="consumption" name="energy-type" value="consumption" class="border-2 typeSelector" checked>
             <label for="production" class="border-2 mt-20 mb-20">Production</label>
-            <input type="radio" id="production" name="energy-type" value="production" class="border-2 mr-40 mt-20 mb-20 typeSelector">
-            <select id="sectorDropdown" name="filter" class="border-2 mr-40 mt-20 mb-20">
-                <option value="default">Select an Energy Sector</option>
+            <input type="radio" id="production" name="energy-type" value="production" class="border-2 typeSelector">
+            <select id="sectorDropdown" name="filter" class="border-2">
+                <option value="default">Energy Sector</option>
                 <option value="renewables">Renewables</option>
                 <option value="fossil-fuels">Fossil Fuels</option>
                 <option value="nuclear">Nuclear</option>
             </select>
-            <select id="energyDropdown" name="filter1" class="border-2 mr-80 mt-20 mb-20">
+            <select id="energyDropdown" name="filter1" class="border-2">
 
             </select>
-            <select name="yearpicker" id="yearpicker">
+            <select name="yearpicker" id="yearpicker" class="border-2">
                 
             </select>
+            <button id="submit-filter-btn" class="border-2">Filter</button>
         </div>
         <div class="container">
             <div class="myText bg-blue-200 p-6">

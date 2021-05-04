@@ -32,8 +32,8 @@ function cleanup () {
 process.on('SIGINT', cleanup);
 process.on('SIGTERM', cleanup);
 
-app.get('/', (req, res) => {
-    res.json(req.query);
+app.get('/', query.getAll, (req,res)=>{
+    res.json(res.locals.queryData);
 });
 
 app.get('/ping', (_,res:Response)=>{res.send("pong")});
