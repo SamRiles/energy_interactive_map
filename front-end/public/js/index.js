@@ -78,7 +78,7 @@ $(function () {
                         let fuelType = $("#energyDropdown option:selected").text();
                         $('.myText span').html(`
                             <p>State: ${id}</p>
-                            <p>${fuelType} ${type}: ${result[0].data} BTUs</p>
+                            <p>${fuelType} ${type}: ${result[0].data.toLocaleString()} BTUs</p>
                         `);
                     }
                 }
