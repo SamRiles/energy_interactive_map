@@ -18,7 +18,7 @@
     <script src="js/index.js"></script>
     <!-- <script src="js/scripts.js"></script> -->
 </head>
-<body class='text-black'>
+<body class='h-screen flex flex-col text-black'>
     <header>
         <nav class="flex items-center justify-between flex-wrap bg-blue-200 p-6">
             <!--Title-->
@@ -35,19 +35,19 @@
             </div>
         </nav>
     </header>
-    <content>
-        <div id="filter-fueltype" class="container mx-auto py-3">
-            <label for="consumption" class="border-2">Consumption</label>
+    <content class="flex-grow">
+        <div id="filter-fueltype" class="container mx-auto py-3 pt-10 pb-10">
+            <label for="consumption" class="border-2 ml-3">Consumption</label>
             <input type="radio" id="consumption" name="energy-type" value="consumption" class="border-2 typeSelector" checked>
-            <label for="production" class="border-2 mt-20 mb-20">Production</label>
+            <label for="production" class="border-2 mt-20 mb-20 ml-4">Production</label>
             <input type="radio" id="production" name="energy-type" value="production" class="border-2 typeSelector">
-            <select id="energyDropdown" name="filter1" class="border-2">
+            <select id="energyDropdown" name="filter1" class="border-2 ml-4">
 
             </select>
-            <select name="yearpicker" id="yearpicker" class="border-2">
+            <select name="yearpicker" id="yearpicker" class="border-2 ml-4">
                 
             </select>
-            <button id="submit-filter-btn" class="border-2">Filter</button>
+            <button id="submit-filter-btn" class="inline-block text-sm px-4 py-2 ml-4 leading-none border rounded text-black border-black hover:bg-blue-200">Filter</button>
         </div>
         <div class="container">
             <div class="myText bg-blue-200 p-6">
@@ -61,7 +61,7 @@
             </div>
         </div>
     </content>
-    <footer class="flex items-center justify-between flex-wrap bg-blue-200 p-6 mt-44">
+    <footer class="flex items-center justify-between flex-wrap bg-blue-200 p-6">
         <p>Creators: Jed Pulley, Jt Anderson, Sam Reilly</p>
         <p><a href="https://github.com/SamRiles/energy_interactive_map" class="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black mt-4 lg:mt-0">
             Source Code on Github</a></p>
