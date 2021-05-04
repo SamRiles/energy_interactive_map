@@ -30,7 +30,7 @@ $(function () {
         }
     }
 
-    function getData(hostname) {
+    async function getData(hostname) {
         let data = {};
         let filters = {
             type: $("input[name='energy-type']:checked").val(),
@@ -38,20 +38,22 @@ $(function () {
             sector: $("#sectorDropdown option:selected").val(),
             year: $("#yearpicker option:selected").val(),
         };
-        
-        axios.get(hostname, {
-              params: filters,
-          })
-          .then(res => data = res)
-          .catch(err => console.error(err));
 
-        return data;
+        try {
+            return (await axios.get(hostname, {
+                params: filters
+            })).data
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     drawEnergyDropdown();
     drawYearDropdown();
-    let apiData = getData('http://127.0.0.1:3000/');
-    console.log(apiData);
+    getData('http://127.0.0.1:3000/')
+    .then((apiData)=>{
+        console.log(apiData);
+    });
 
 
     $(".mapcontainer").mapael({
