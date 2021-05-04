@@ -70,7 +70,6 @@ $(function () {
         let filters = {
             type: $("input[name='energy-type']:checked").val(),
             fuelType: $("#energyDropdown option:selected").val(),
-            sector: $("#sectorDropdown option:selected").val(),
             year: $("#yearpicker option:selected").val(),
         };
 
